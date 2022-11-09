@@ -1,0 +1,356 @@
+/* new chng */
+
+.container {
+    display: grid;
+    grid-template-columns: 100% 0%;
+    width: 36%;
+}
+
+.container button {
+    background: transparent;
+    border: 0;
+    transform: translateX(-40px);
+    cursor: pointer;
+    /* &:focus {
+        outline: 0;
+     } */
+}
+
+.ZoomUrl {
+    font-size: 13px;
+}
+
+
+/* new chng end */
+
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+}
+
+.pickChat {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display: flex;
+    height: calc(100vh - 36px);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+}
+
+.pickChat::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.profile-wrapper {
+    width: 100%;
+    background-color: #e6e9f7;
+    display: flex;
+    margin-top: 23px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-between;
+}
+
+.user-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.incoming-msg {
+    padding: 20px 10px 0px 20px;
+    width: 70%;
+}
+
+.incomimg-text {
+    padding: 15px;
+    background-color: #e5e5e5;
+    border-radius: 10px 10px 10px 0px;
+}
+
+.incoming-img-wrapper {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-bottom: 17px;
+}
+
+.incoming-img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.message-area {
+    width: 100%;
+    overflow-y: scroll;
+    height: calc(100vh - 200px);
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* Internet Explorer 10+ */
+    scroll-behavior: auto;
+}
+
+.recievedot {
+    padding-bottom: 44px;
+    padding-left: 5px;
+}
+
+.message-area::-webkit-scrollbar {
+    /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.incoming-time {
+    font-weight: 500px;
+    color: gray;
+    font-size: 12px;
+}
+
+.outgoing-msg-wrapper {
+    width: 70%;
+    padding: 0px 20px 0px 10px;
+}
+
+.outgoing-text {
+    padding: 15px;
+    background-color: #e6e9f7;
+    border-radius: 10px 10px 0px 10px;
+}
+
+.send-area {
+    width: 100%;
+    min-height: 59px;
+    padding: 0px 20px;
+}
+
+.send-wrapper {
+    height: 45px;
+    width: 100%;
+    border-radius: 25px;
+    background-color: white;
+    box-shadow: 0px 0px 20px gainsboro;
+    display: flex;
+    align-items: center;
+    padding: 0px 25px;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.send-text {
+    width: 85%;
+    border: none;
+}
+
+.edit {
+    width: 100%
+}
+
+.send-text:focus,
+.send-text:active {
+    border: none;
+    outline: none;
+}
+
+.optionDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.optionSenderModal {
+    width: 200px;
+    margin-top: 150px;
+    left: 65%;
+    bottom: 0;
+    z-index: 10040;
+    overflow: auto;
+    overflow-y: auto;
+}
+
+.text-start:hover {
+    background-color: #E5F8F4
+}
+
+.chat-responsive-btn {
+    width: 150px;
+    height: 35px;
+    background-color: #3ddebd;
+    border: none;
+    color: white;
+    font-weight: 500;
+}
+
+.zoomsavebtn {
+    background-color: #3ddebd;
+    color: white;
+    width: 150px;
+    border-radius: 30px;
+    margin-left: 15px;
+}
+
+.zoomFormdiv {
+    box-shadow: 0px 0px 0px white;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.chat-responsive-btn {
+    width: 168px;
+}
+
+
+/* .clipboardMainDiv{
+
+} */
+
+.saveDiv {
+    margin-left: 150px;
+}
+
+
+/* .matCardDiv{
+
+} */
+
+.clipboardDiv {
+    display: flex;
+    padding-top: 5px;
+    margin-left: 40px;
+}
+
+
+/* .clipboardTextDiv{
+
+} */
+
+#clipboard-example-textarea {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 4px;
+    border-radius: 7px;
+    box-shadow: 0px 0px 20px gainsboro;
+    border-color: #3ddebd;
+}
+
+
+/* .clipboardBtnDiv{
+
+} */
+
+.clipboardbtn {
+    background-color: #3ddebd;
+    color: white;
+    width: 101px;
+    padding: 7px 20px;
+    border-radius: 30px;
+    margin-left: 15px;
+    border: none;
+    font-weight: 400;
+}
+
+.chatName {
+    display: flex;
+}
+
+.reactedEmoji {
+    /* word-wrap: break-word;
+    word-break: break-all;
+    height: 80px; */
+    width: 80px;
+    overflow: scroll;
+}
+
+@media only screen and (max-width: 768px) {
+    .saveDiv {
+        margin-left: 75px;
+    }
+    /* .matCardDiv{
+
+      } */
+    .clipboardDiv {
+        display: flex;
+        padding-top: 5px;
+        margin-left: 3px;
+    }
+    .clipboardDiv {
+        padding-top: 5px;
+        display: flex;
+        flex-direction: column;
+    }
+    .clipboardTextDiv {
+        margin-left: 20px;
+    }
+    .clipboardBtnDiv {
+        margin-left: 70px;
+    }
+    .profile-wrapper {
+        margin-top: 5px;
+        box-shadow: 0px 0px 20px gainsboro;
+    }
+    .pickChat {
+        display: none;
+    }
+    .send-text {
+        width: 75%;
+        border: none;
+    }
+    .send-area {
+        width: 100%;
+        min-height: 59px;
+        padding: 0px 0px;
+    }
+    .message-area {
+        height: calc(100vh - 250px);
+    }
+}
+
+.emoji-mart {
+    float: right !important;
+    position: fixed;
+    bottom: 70px;
+    right: 20px;
+}
+
+
+/* cross button model sechdulae meeting */
+
+.close-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap
+}
+
+.topright {
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.reactedEmoji {
+    background-color: #e6e9f7;
+    border: none;
+    outline: none;
+}

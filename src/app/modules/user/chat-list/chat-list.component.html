@@ -1,0 +1,117 @@
+<div class="contact-list px-3 messageWrapper">
+    <div class="row header">
+        <h1 class="pt-5 message-heading">Messages</h1>
+    </div>
+    
+    <div class="row messageWrapperContent">
+        <div class="parentChatWrapper d-flex flex-column justify-content-between">
+            <div>
+                <div class="message-contact p-2" (click)="showMessage(x.recieverId)" (click)="navigateToChatDetail()"
+                    *ngFor="let x of messageList; let i =index" >
+                    <p class="m-0  time">{{utilityservice.getFormatedTime(x.time)}}</p>
+                    <div class="d-flex">
+                        <div class="contact-img">
+                            <img src="{{x.image ? 'https://raphael-dashboard.hackerkernel.com' + x.image : 'assets/web/prof.png'}}"
+                                alt="" class="img-cover">
+                        </div>
+                        <div>
+                            <p class="m-0 fw-500">{{ x.recieverName}}</p>
+                            <div class="d-flex ">
+                                <p class="fs-12 m-0 gray lastMsg">{{x.message}}</p>
+
+                                <p class="notifyMessage" *ngIf="x.showCount">{{x.count}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test mb-5">
+                <div class="textDiv" *ngIf="!messageList.length">
+                    <div class="convtext1div text-center">
+                        <p class="convtext1">Send a message</p>
+                    </div>
+
+                    <div class="convtext1div text-center">
+                        <p class="convtext2">Search for your recent Bridges, and reach out. No need to be shy!</p>
+                    </div>
+
+                </div>
+
+                <div class="convbtnDiv" data-bs-toggle="modal" data-bs-target="#startConvModal">
+                    <button class="startConvbtn ">
+                        <div><img class="msgbtnimg" src="assets/web/msgbtn.png"></div>
+                        <div>
+                            <p class="start_convtext">Start conversation</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="modal fade conversationModal" id="startConvModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body ">
+                        <div>
+                            <p class="text-center fw-500 fs-22 pt-4   gray-1">Send a message!</p>
+                        </div>
+                        <div>
+                            <p class="text-center text-secondary">Search for your recent Bridges, and reach out. No need
+                                to be shy!</p>
+                        </div>
+                        <form>
+                            <mat-form-field class="example-full-width messageInput " appearance="outline">
+                                <div class="messageInputDiv">
+                                    <p class="mt-2 fs-6 fw-600 who">Who :</p>
+                                    <div class="msgField">
+                                        <input matInput class="msgtext" type="text" aria-label="Number"
+                                            autocomplete="off" matInput placeholder="Search username"
+                                            formControlName="message" (keyup)="searchChatUser($event)"
+                                            [matAutocomplete]="auto"   >
+                                        <img class="msgSearchImg" src="assets/web/msgSearch.png">
+                                        <mat-autocomplete #auto="matAutocomplete" >
+                                            <mat-option class="bridge-list" (click)="showMessage(data._id)"
+                                                (click)="add(data.firstname)" *ngFor="let data of searchChatUserList"
+                                                [value]="data.firstname">
+                                                {{data.firstname}}
+                                            </mat-option>
+                                        </mat-autocomplete>
+                                    </div>
+                                </div>
+
+                            </mat-form-field>
+                            <mat-chip-list #chipList class="chipDiv">
+                                <mat-chip class="matchip railway " *ngFor="let d of searchChatUserTagList;let i= index"
+                                    [selectable]="selectable" [removable]="removable" (removed)="remove(i)">{{d}}
+                                    <button matChipRemove *ngIf="removable">
+                                        <mat-icon class="cancel mat-cancel">cancel</mat-icon>
+                                        <!-- <img class="cancel" src="assets/web/cancel_icon.svg" width="20px"> -->
+                                    </button>
+                                </mat-chip>
+                            </mat-chip-list>
+
+                            <div class="d-flex justify-content-around modal-footer">
+                                <div>
+                                    <button type="button" #AddInterestModalBtn class="btn thirdModal_cancel"
+                                        data-bs-dismiss="modal">
+                                        Cancel</button>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn save-btn" #AddChatUserModalBtn
+                                        (click)="searchChatUsers()" class="btn thirdModal_cancel"
+                                        data-bs-dismiss="modal">Done</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

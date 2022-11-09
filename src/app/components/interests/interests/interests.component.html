@@ -1,0 +1,46 @@
+<section class="login-wrapper">
+    <div class="row h-100 no-gutters position-relative content">
+        <img src="assets/web/Vector.svg" alt="" class="img-bottom">
+        <div class="col-md-4 rectangle-img">
+            <img src="assets/web/logo.svg" width="150px" routerLink="/login">
+        </div>
+        <div class="col-md-8 pt-5 pt-md-0 center-card">
+            <div class="row pl-md-5 pl-0 pt-100">
+                <div class="col-md-7  bg-white">
+                    <p class="fs-1 pb-4 fw-500 m-0 line-height heading-color ">Tell us your interests!</p>
+                    <p class="fw-600 railway gray-1 fs-16 pb-4"> Choosing your interests helps us match you with the
+                        right mentors. Pick from options like Finance, Medicine, Law, and more!</p>
+
+                    <form class="form-size">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input class="fs-6 pb-2 interestinput" type="text" placeholder="Type your interests"
+                                autocomplete="off" aria-label="Number" matInput [formControl]="myControl"
+                                [matAutocomplete]="auto" (keyup)="searchInterest($event)" required>
+                            <mat-icon class="fs-3 fw-200 pt-2" matSuffix>search</mat-icon>
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option (click)="add(d1.interest)" *ngFor="let d1 of interestlist">{{d1?.interest}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-chip-list #chipList>
+                            <mat-chip class="matchip railway" *ngFor="let d of tagslist;let i= index"
+                                [selectable]="selectable" [removable]="removable" (removed)="remove(i)">{{d}}
+
+                                <button matChipRemove *ngIf="removable">
+                                    <mat-icon class="cancel ">cancel</mat-icon>
+                                    <!-- <img class="cancel" src="assets/web/cancel_icon.svg" width="20px"> -->
+                                </button>
+                            </mat-chip>
+                        </mat-chip-list>
+                        <div class="d-flex justify-content-md-between btn-wrapper pb-4 pt-3">
+                            <button type="submit" class="btn loginbtn railway" (click)="userDetails()">Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="assets/Responsive/bottom.svg" alt="" class="responsive-bottom-img">
+
+</section>

@@ -1,0 +1,16 @@
+.save-btn {
+    background-color: #3DDEBD;
+    color: white;
+    font-weight: 500;
+    border-radius: 30px;
+    padding: 8px 50px;
+}
+.save-btn:hover {
+    background-color: #34b198 ;
+}
+
+@media only screen and (max-width: 768px) {
+    .save-btn {
+       width: 100%;
+    }
+}

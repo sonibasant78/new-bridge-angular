@@ -1,0 +1,44 @@
+<section>
+
+  <div class="head">
+    <button type="button" class="btn btn-outline-primary head-btn railway">People</button>
+    <button type="button" class="btn btn-outline-primary head-btn railway">Company</button>
+    <button type="button" class="btn btn-outline-primary head-btn railway">School</button>
+    <button type="button" class="btn btn-outline-primary head-btn railway">#interest</button>
+  </div>
+
+
+  <div *ngIf="!searchedUserDetails">
+    <p class="no_res text-center mt-5">No Result Found</p>
+  </div>
+  <div class="searchedwrapper">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card-wrapper">
+          <div class="d-flex align-items-start justify-content-between card-upper">
+            <div class="d-flex">
+              <div class="card-img">
+                <img
+                  src="{{searchedUserDetails?.image ? 'https://raphael-dashboard.hackerkernel.com' + searchedUserDetails?.image : 'assets/web/prof.png'}}"
+                  alt="" class="avatar-img">
+              </div>
+              <div>
+                <h2 class="m-0">{{searchedUserDetails?.firstname}}</h2>
+                <a href="">{{searchedUserDetails?.email}}</a>
+                <h3 class="gray d-flex align-items-center fs-14 fw-400">User status <span class="heading-dot"></span> 20
+                  minutes</h3>
+              </div>
+            </div>
+            <div>
+              <img src="assets/web/dot.svg" alt="">
+            </div>
+          </div>
+          <div>
+            <p class="fs-14">{{searchedUserDetails?.description}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"> </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,74 @@
+<section class="section">
+    <div class="row justify-content-center pb-5 ">
+        <div class="col-md-7">
+
+            <div class="d-flex align-items-center">
+                <div class="profile-img">
+                    <!-- <mat-spinner *ngIf="loading" class="img-cover matSpinnerSize">
+
+                    </mat-spinner> -->
+                    <div class="spinner-border img-cover  " role="status" *ngIf="loading">
+                        <span class="sr-only" id="loader"></span>
+                    </div>
+                    <img [hidden]="loading" (load)="onLoad()" [src]="profileimage" alt="" class="img-cover">
+                </div>
+                <div>
+                    <p class="ms-3  fw-500 line-bottom5">Account settings</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row justify-content-center gx-0">
+
+        <div class=" pb-2 account-setting-responsive">
+            <div class="account-setting-icon-wrapper cursor-pointer" routerLink="/user/account-setting/change-username">
+                <div class="icon-wrapper" (click)="select()"
+                    [ngClass]="{'active': cardselect =='/user/account-setting/change-username'}">
+                    <img src="assets/web/username-icon.svg" alt="" width="30px" height="30px">
+                </div>
+                <p class="text-center fs-12 fw-400">Change username</p>
+            </div>
+            <div class="account-setting-icon-wrapper cursor-pointer" routerLink="/user/account-setting/change-password">
+                <div class="icon-wrapper" (click)="select()"
+                    [ngClass]="{'active': cardselect =='/user/account-setting/change-password'}">
+                    <img src="assets/web/password-icon.svg" alt="" width="30px" height="30px">
+                </div>
+                <p class="text-center fs-12 fw-400">Change password</p>
+            </div>
+            <div class="account-setting-icon-wrapper cursor-pointer" routerLink="/user/account-setting/sign-out">
+                <div class="icon-wrapper" (click)="select()"
+                    [ngClass]="{'active': cardselect =='/user/account-setting/sign-out'}">
+                    <img src="assets/web/sign-out.svg" alt="" width="30px" height="30px">
+                </div>
+                <p class="text-center fs-12 fw-400">Sign out</p>
+            </div>
+            <div class="account-setting-icon-wrapper cursor-pointer" routerLink="/user/account-setting/delete-account">
+                <div class="icon-wrapper" (click)="select()"
+                    [ngClass]="{'active': cardselect =='/user/account-setting/delete-account'}">
+                    <img src="assets/web/delete-icon.svg" alt="" width="30px" height="30px">
+                </div>
+                <p class="text-center fs-12 fw-400">Delete account</p>
+            </div>
+        </div>
+
+        <div class="col-md-2 d-none d-md-block">
+
+            <p class="fw-500 fs-18  cursor-pointer" routerLink="/user/account-setting/change-username"
+                (click)="select()" [ngClass]="{'line-bottom1': cardselect =='/user/account-setting/change-username'}">
+                Change username</p>
+            <p class="fw-500 fs-18  cursor-pointer" routerLink="/user/account-setting/change-password"
+                (click)="select()" [ngClass]="{'line-bottom2': cardselect =='/user/account-setting/change-password'}">
+                Change password</p>
+            <p class="fw-500 fs-18  cursor-pointer" routerLink="/user/account-setting/sign-out" (click)="select()"
+                [ngClass]="{'line-bottom3': cardselect =='/user/account-setting/sign-out'}">Sign out</p>
+            <p class="fw-500 fs-18  cursor-pointer" routerLink="/user/account-setting/delete-account" (click)="select()"
+                [ngClass]="{'line-bottom4': cardselect =='/user/account-setting/delete-account'}">Delete account</p>
+
+        </div>
+        <div class="col-md-5 pb-5">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</section>

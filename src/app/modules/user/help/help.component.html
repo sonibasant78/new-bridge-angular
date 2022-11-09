@@ -1,0 +1,61 @@
+<div class="container ">
+  <div class="row justify-content-center">
+    <div class="col-md-6 pr-md-5 pl-md-5 pt-4 pb-4">
+      <p class="main-heading fw-500">You’ve got questions. We’ve got answers.</p>
+      <p class="fs-14 gray-1">Got a technical question? Need help navigating the platform? Let us know! We're here to
+        help.</p>
+      <form [formGroup]="helpForm" id="myForm" (ngSubmit)="helpFormData()">
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label class="railway fw-600 gray">About you</mat-label>
+
+            <mat-select formControlName="about">
+              <mat-option *ngFor="let item of Aboutlist" value="{{item.about}}">{{item.about}}</mat-option>
+
+            </mat-select>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label class="railway fw-600 gray">School Name</mat-label>
+            <input matInput [matAutocomplete]="auto" name="search" type="text" placeholder="School name"
+              autocomplete="off" formControlName="schoolname" (keyup)="searchSchool($event)">
+            <mat-autocomplete #auto="matAutocomplete">
+              <mat-option *ngFor="let data of schoollist" [value]="data.schoolname">{{data.schoolname}}
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label class="railway fw-600 gray">Your email</mat-label>
+            <input matInput type="text" placeholder="your Email" autocomplete="off" formControlName="email">
+          </mat-form-field>
+        </p>
+
+        <p>
+          <mat-form-field appearance="outline">
+            <mat-label class="railway fw-600 gray">How can we help?</mat-label>
+            <textarea matInput cdkTextareaAutosize [cdkAutosizeMinRows]="5" [cdkAutosizeMaxRows]="6"
+              formControlName="help"></textarea>
+          </mat-form-field>
+        </p>
+
+        <button class="btn submitbtn railway">Submit</button>
+        <p class="ErrorMsg">{{msg}}</p>
+
+
+      </form>
+
+    </div>
+
+    <div class="col-md-4 d-md-flex d-none justify-content-end align-items-center ">
+      <img src="assets/web/Help.svg" alt="" width="90%" height="80%">
+
+    </div>
+
+  </div>
+
+</div>

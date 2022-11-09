@@ -1,0 +1,18 @@
+.sign-out-btn {
+    background-color: #3ddebd;
+    color: white;
+    font-weight: 500;
+    border-radius: 30px;
+    padding: 9px 40px;
+}
+.gray-1{
+    color: #333333;
+}
+.sign-out-btn:hover {
+    background-color: #34b198 ;
+}
+@media only screen and (max-width: 768px) {
+    .sign-out-btn {
+       width: 100%;
+    }
+}

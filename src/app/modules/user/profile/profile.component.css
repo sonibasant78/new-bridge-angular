@@ -1,0 +1,442 @@
+/* new chngs */
+
+/* .modal{
+  pointer-events: none;
+}
+
+.modal-dialog{
+  pointer-events: all;
+} */
+/* new chnges ends */
+.titleBorder{
+  border-bottom: #3ddebd solid 12px;
+  height: 0%;
+  width: 85%;
+}
+hr.new5{
+  border: 10px solid green;
+  border-radius: 5px;
+}
+.profile-img-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.profile-wrapper {
+  width: 100%;
+  padding: 50px 0px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0px 0px 20px gainsboro;
+  margin: 20px 0px;
+}
+.matchip {
+  background-color: #3ddebd;
+  color: #ffffff;
+  padding-left: 32px !important;
+  font-weight: 400;
+  margin-top: 20px;
+  margin-bottom: 13px !important;
+}
+::ng-deep.mat-standard-chip .mat-chip-remove .mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 23px !important;
+  position: absolute;
+  top: -8px;
+  right: 6px;
+}
+::ng-deep.mat-chip.mat-standard-chip .mat-chip-remove {
+  opacity: 1 !important;
+  color: #061775 !important;
+}
+.loader{
+  width:50px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;  
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #5ee6da;  
+  animation: spin 2s linear infinite;
+}
+
+
+
+.interestOutline{
+  /* border: none !important; */
+  border: 2px solid red;
+
+}
+::ng-deep #AddInterestModal .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white!important;
+   opacity: 1!important;
+}
+
+.profile-img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.bridge-btn {
+  width: 100px;
+  height: 35px;
+  background-color: #3ddebd;
+  border: none;
+  color: white;
+  font-weight: 500;
+}
+.bridge-btn:hover {
+  background-color: #34b198;
+  border: none;
+}
+.interestes-wrapper {
+  width: 100%;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px gainsboro;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.plus-btn {
+  width: 40px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3ddebd;
+  border: none;
+}
+.plus-btn:hover {
+  background-color: #34b198;
+  border: none;
+}
+.interests-btn {
+  padding: 5px 10px;
+  margin-left: 10px;
+  margin-top: 8px;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  border: 1px solid black;
+}
+.prof {
+  border-radius: 50%;
+}
+
+.interests-btn:hover {
+  background-color: #3ddebd;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.btn-outline {
+  color: black;
+  border-color: black;
+}
+.Experience-wrapper {
+  width: 100%;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px gainsboro;
+  padding: 25px 25px;
+}
+.nameofproject-wrapper {
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 7px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+/* .calendlydiv{
+  width: 100%;
+  
+} */
+.project-img-wrapper {
+  width: 60px;
+  height: 60px;
+  background-color: #5864aa;
+  border-radius: 5px;
+  margin-right: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.jennifer-height {
+  /* line-height: 30px;
+  padding-bottom: 10px;
+  cursor: pointer; */
+
+  line-height: 30px;
+    padding-bottom: 18px;
+    cursor: pointer;
+}
+.bridge-responsive-btn {
+  position: absolute;
+  top: 0px;
+  left: 15px;
+  background-color: #3ddebd;
+  border-radius: 50%;
+  padding: 7px 7px;
+  border: none;
+  display: none;
+}
+.bridge-responsive-btn:hover {
+  background-color: #34b198;
+}
+.editProfileImg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.hide{
+  display: none !important;
+}
+.show{
+  display:block !important;
+}
+.edit-btn-responsive {
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  display: none;
+}
+.hide-me {
+  display: none;
+}
+.gray-1 {
+  color: #333333;
+}
+.delete-btn {
+  border-color: #3ddebd;
+  border-radius: 30px;
+  width: 150px;
+  height: 45px;
+  font-weight: 400;
+  color: #3ddebd;
+}
+.delete-btn:hover {
+  background-color: #db3232;
+}
+.save-btn {
+  background-color: #3ddebd;
+  border-radius: 30px;
+  width: 150px;
+  height: 45px;
+  font-weight: 400;
+  color: white;
+}
+.save-btn:hover {
+  background-color: #34b198;
+  border: none;
+}
+.edit-btn {
+  border: none;
+  background-color: transparent;
+}
+
+.img-btn {
+  width: 50%;
+  border-radius: 6px;
+  font-weight: 600;
+}
+.profile-img2 {
+  height: 110%;
+  width: 110%;
+  border-radius: 50%;
+}
+.thirdModal_cancel {
+  border-color: #3ddebd;
+  border-radius: 30px;
+  width: 150px;
+  height: 45px;
+  font-weight: 400;
+  color: #3ddebd;
+}
+.thirdModal_cancel:hover {
+  background-color: #db3232;
+  color: white;
+  border-color: white;
+}
+.modal4option{
+  display: inline-block;
+}
+
+
+.clipboardMainDiv{
+  display: flex;
+  justify-content: space-between;
+}
+.saveDiv{
+margin-right: 20px;
+}
+/* .matCardDiv{
+
+} */
+.clipboardDiv{
+ display: flex;
+ padding-top: 5px;
+ 
+}
+/* .clipboardTextDiv{
+
+} */
+#clipboard-example-textarea{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 4px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 20px gainsboro;
+  border-color: #3ddebd;
+  
+
+}
+/* .clipboardBtnDiv{
+
+} */
+.clipboardbtn{
+  background-color: #3ddebd;
+  color: white;
+  width:101px;
+  padding: 7px 20px;
+  border-radius: 30px;
+  margin-left: 15px;
+  border: none;
+  font-weight: 400;
+ 
+}
+/*  */
+::ng-deep.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+.modal-content {
+  border-radius: 8px;
+}
+.modal-body {
+  padding: 1rem 2rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+.container{
+  width: 100%;
+  
+}
+.zoomsavebtn{
+  background-color: #3ddebd;
+  color: white;
+  width:100px;
+  border-radius: 30px;
+  margin-left: 15px;
+
+}
+
+  .bridge-btn {
+    display: none;
+  }
+  .jennifer-height {
+    line-height: 30px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    margin-left: 50px !important;
+  }
+  .responsive-hide {
+    display: none;
+  }
+  .profile-responsive {
+    text-align: center;
+  }
+  .profile-wrapper {
+    padding: 20px 0px;
+    width:100%;
+  }
+  .bridge-responsive-btn {
+    display: block;
+  }
+  .edit-btn-responsive {
+    display: block;
+  }
+  .interestes-wrapper {
+    display: none;
+  }
+  .hide-me {
+    display: block;
+  }
+  .modal-content {
+    margin: 60px 0px;
+  }
+  .delete-btn {
+    width: 125px;
+  }
+  .save-btn {
+    width: 125px;
+  }
+  /* .calendlydiv{
+    width: 100%;
+  } */
+  .zoomFormdiv{
+    width:100%;
+  }
+  .zoomForm{
+    width: 100%;
+}
+.desc{
+  margin-left: 20px;
+}
+.Experience-wrapper {
+  width:100%;
+}
+.interestes-wrapper{
+  width:100%;
+}
+/* .matCardDiv{
+
+} */
+.clipboardDiv{
+ display: flex;
+ 
+ 
+}
+/* .clipboardTextDiv{
+
+} */
+#clipboard-example-textarea{
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 10px;
+  padding-right: 4px;
+  border-radius: 7px;
+  box-shadow: 0px 0px 20px gainsboro;
+  width: 50px;
+
+}
+/* .clipboardBtnDiv{
+
+} */
+.clipboardbtn{
+  background-color: #3ddebd;
+  color: white;
+  width:100px;
+  
+  border-radius: 30px;
+  margin-left: 5px;
+  border: none;
+  font-weight: 400;
+  padding: 9px 3px;
+ 
+}
+}

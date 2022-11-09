@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="row ">
+    <!-- <div class="col-md-3 contact-list">
+            <h1 class="pt-5 message-heading">Messages</h1>
+            <div class="message-contact" [ngClass]="{'active': i == selectedChatIndex}"
+                *ngFor="let x of[1,2,3,4,5,6,8,9,10,11,12]; let i =index" (click)="showMessage(i)">
+                <p class="m-0  time">10:30 AM</p>
+                <div class="d-flex">
+                    <div class="contact-img">
+                        <img src="assets/web/area.svg" alt="" class="img-cover">
+                    </div>
+                    <div>
+                        <p class="m-0 fw-500">Kristin Watson</p>
+                        <p class="fs-10 m-0 gray">Amet minim mollit non deserunt ullam minim</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div> -->
+    <div class="col-md-3 p-0">
+      <app-chat-list (chatUserIdForChatDetails)="OnChatUserSelected($event)"></app-chat-list>
+    </div>
+    <div class="col-md-9 p-0">
+      <app-chat-detail></app-chat-detail>
+    </div>
+  </div>
+</section>

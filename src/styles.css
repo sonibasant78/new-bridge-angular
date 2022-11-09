@@ -1,0 +1,312 @@
+@import '~@ctrl/ngx-emoji-mart/picker';
+*
+ {
+  box-sizing: border-box;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  position: relative !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.modal-backdrop {
+  z-index: 999;
+}
+.modal {
+  z-index: 1000;
+}
+.railway {
+  font-family: "Raleway", sans-serif;
+}
+
+.sky {
+  color: #3ddebd;
+}
+.fs-10 {
+  font-size: 10px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-16 {
+  font-size: 16px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+.fs-22 {
+  font-size: 22px;
+}
+
+.fs-25 {
+  font-size: 25px;
+}
+.fs-28 {
+  font-size: 28px;
+}
+
+.fs-30 {
+  font-size: 30px;
+}
+
+.fs-35 {
+  font-size: 35px;
+}
+.fs-40 {
+  font-size: 40px;
+}
+.fs-45 {
+  font-size: 45px;
+}
+.fs-50 {
+  font-size: 50px;
+}
+.fw-200 {
+  font-weight: 200;
+}
+.fw-300 {
+  font-weight: 300;
+}
+
+.fw-400 {
+  font-size: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+.fw-700 {
+  font-weight: 700;
+}
+.fw-800 {
+  font-weight: 800;
+}
+.fw-900 {
+  font-weight: 900;
+}
+
+.mr-5 {
+  margin-right: 5px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+
+.mr-15 {
+  margin-right: 15px;
+}
+
+.mr-20 {
+  margin-right: 20px;
+}
+.mr-30 {
+  margin-right: 30px;
+}
+.ml-10 {
+  margin-left: 10px;
+}
+.ml-15 {
+  margin-left: 15px;
+}
+.ml-30 {
+  margin-left: 30px;
+}
+.mb-60 {
+  margin-bottom: 60px;
+}
+
+.mb-30 {
+  margin-bottom: 40px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-15 {
+  margin-bottom: 15px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.pt-10 {
+  padding-top: 10px;
+}
+
+.pt-15 {
+  padding-top: 15px !important;
+}
+.pt-17 {
+  padding-top: 17px;
+}
+.pt-20 {
+  padding-top: 20px;
+}
+.pt-30 {
+  padding-top: 30px;
+}
+.pt-50 {
+  padding-top: 50px;
+}
+.pt-60 {
+  padding-top: 60px;
+}
+.pt-70 {
+  padding-top: 70px;
+}
+.pt-80 {
+  padding-top: 80px;
+}
+.pt-90 {
+  padding-top: 90px;
+}
+.pt-100 {
+  padding-top: 100px;
+}
+.pt-110 {
+  padding-top: 110px;
+}
+.pt-120 {
+  padding-top: 120px;
+}
+.pt-140 {
+  padding-top: 140px;
+}
+.pb-40 {
+  padding-bottom: 40px;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
+.pb-20 {
+  padding-bottom: 20px;
+}
+
+.pb-15 {
+  padding-bottom: 15px !important;
+}
+
+.pb-10 {
+  padding-bottom: 10px;
+}
+.pr-5 {
+  padding-right: 5px;
+}
+.pr-10 {
+  padding-right: 10px;
+}
+.pr-15 {
+  padding-right: 15px;
+}
+.pr-30 {
+  padding-right: 30px;
+}
+.pb-60 {
+  padding-bottom: 60px;
+}
+.pb-80 {
+  padding-bottom: 80px;
+}
+.pr-100 {
+  padding-right: 100px;
+}
+.pr-20 {
+  padding-right: 20px;
+}
+.pl-20 {
+  padding-left: 20px;
+}
+.pl-15 {
+  padding-left: 15px;
+}
+.line-height {
+  line-height: 40px;
+}
+.center-card {
+  height: 85vh;
+}
+.b-r {
+  border-radius: 50%;
+}
+
+.gray {
+  color: #828282;
+}
+.white {
+  color: white;
+}
+
+.black {
+  color: black;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.heading-color {
+  color: #333333;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin-right: 100px;
+  /* background-color: white; */
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick,
+::ng-deep.mat-form-field-label {
+  color: black !important;
+}
+
+
+.mat-form-field-wrapper {
+  padding-bottom: 13px !important;
+}
+.form-size {
+  margin-right: 100px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  .form-size {
+    margin-right: unset;
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

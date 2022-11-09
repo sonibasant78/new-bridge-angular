@@ -1,0 +1,58 @@
+.about-input {
+  width: 100%;
+  height: 100%;
+}
+.main-heading {
+  font-size: 45px;
+  line-height: 48px;
+}
+.submitbtn {
+  background-color: #3ddebd;
+  width: 130px;
+  height: 45px;
+  border-radius: 25px;
+  color: white;
+  font-weight: 600;
+  margin: 20px 0px;
+}
+.gray-1 {
+  color: #333333;
+}
+.ErrorMsg {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  color: #3ddebd;
+}
+
+::ng-deep.mat-form-field-wrapper {
+  padding-bottom: 0px !important;
+}
+::ng-deep.mat-option.mat-active {
+  background: unset;
+}
+::ng-deep.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+  background: unset;
+}
+::ng-deep.mat-option:hover:not(.mat-option-disabled),
+.mat-option:focus:not(.mat-option-disabled) {
+  background: #ebfffb !important;
+}
+
+/*
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 22px 1em 0 !important;
+}
+
+::ng-deep.mat-form-field-infix {
+    border-top: 5px solid transparent;
+}
+::ng-deep.mat-form-field-appearance-outline .mat-select-arrow-wrapper {
+    transform: translateY(-55%) !important;
+}
+*/
+
+@media only screen and (max-width: 768px) {
+  .submitbtn {
+    width: 100%;
+  }
+}

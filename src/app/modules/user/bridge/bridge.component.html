@@ -1,0 +1,25 @@
+<section class="section">    
+        <div class="row pt-5 bridge-wrapper ">
+            <div class=" bridge-card-wrapper " (click)="sendIndex(data._id)" *ngFor ="let data of bridgedUsers">
+                <div class="">
+                    <ng-container *ngIf="!data?.image;else foundImage">
+                        <img [src]="urllink" alt="" class="img-wrapper">
+                   </ng-container>
+
+                   <ng-template #foundImage>
+                       <ng-container *ngIf="data.image.includes('/public/uploads');else linkedinImage">
+                          <img src="{{this.baseUrl + data.image}}" alt="" class="img-wrapper">
+                       </ng-container>
+                       
+                       <ng-template #linkedinImage>
+                          <img src="{{data.image}}" alt="" class="img-wrapper">
+                       </ng-template>
+                   </ng-template>
+                </div>
+                <div>
+                    <h2 class="m-0 pb-2" (click)="sendIndex(data._id)">{{data.firstname}}</h2>
+                    <p class="fs-14 fw-400 m-0 text-start">{{data.description}}</p>
+                </div>
+            </div>
+        </div>   
+</section>

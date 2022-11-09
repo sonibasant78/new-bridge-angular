@@ -1,0 +1,127 @@
+<section class="section">
+    <div class="row">
+        <div class="col-md-6">
+        </div>
+    </div>
+    <div class="">
+        <div class="row">
+            <div class="col-md-3 left-box-wrapper">
+                <div class="btn-wrapper">
+
+                    <button class=" btn left-box-btn white fw-500  mb-3" routerLink="/user/help"><img
+                            src="assets/web/helpbtn.svg" alt="" class="btn-img">
+                        Help</button>
+                    <button class=" btn left-box-btn white fw-500 " routerLink="/user/account-setting"><img
+                            src="assets/web/settingbtn.svg" alt="" class="btn-img">
+                        Settings</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="pt-3">
+                    <div class="dropdown">
+
+                        <select class="browser-default custom-select custom-select-lg mb-3 Recent-select"
+                            (change)="userlist($event)">
+                            <option class="select-text" value="1">Recently joined</option>
+                            <option class="select-text" value="2">Recommended for you</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-wrapper" *ngFor="let data of Userdetails">
+                    <div class="d-flex align-items-start justify-content-between card-upper">
+                        <div class="d-flex">
+                            <div class="card-img">
+                                <!-- <mat-spinner *ngIf="loading" class="avatar-img matSpinnerSize">
+
+                                </mat-spinner> -->
+                                <div class="spinner-border avatar-img  " role="status" *ngIf="loading">
+                                    <span class="sr-only" id="loader"></span>
+                                </div>
+                                <ng-container *ngIf="!data?.image;else foundImage">
+                                    <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading" class="avatar-img"
+                                        width="90px" height="90px" /> -->
+                                    <img [hidden]="loading" (load)="onLoad()" [src]="urllink" class="avatar-img" />
+                                    <!-- <img [src]="urllink" alt="" class="avatar-img"> -->
+                                </ng-container>
+
+                                <ng-template #foundImage>
+                                    <ng-container *ngIf="data.image.includes('/public/uploads');else linkedinImage">
+                                        <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading"
+                                            class="avatar-img" width="90px" height="90px" /> -->
+                                        <img [hidden]="loading" (load)="onLoad()" src="{{this.baseUrl + data.image}}"
+                                            class="avatar-img" />
+                                        <!-- <img src="{{this.baseUrl + data.image}}" alt="" class="avatar-img"> -->
+                                    </ng-container>
+
+                                    <ng-template #linkedinImage>
+                                        <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading"
+                                            class="avatar-img" width="90px" height="90px" /> -->
+                                        <img [hidden]="loading" (load)="onLoad()" src="{{data.image}}"
+                                            class="avatar-img" />
+                                        <!-- <img src="{{data.image}}" alt="" class="avatar-img"> -->
+                                    </ng-template>
+                                </ng-template>
+                            </div>
+                            <div>
+                                <h2 class="m-0 username" (click)="sendIndex(data._id)">
+                                    {{data.firstname}} {{data.lastname}}</h2>
+                                <h3 class="gray  user-status">{{data.schoolid.schoolname}}<span
+                                        class="heading-dot"></span>{{ utilityService.getFormatedTime(data.createdAt) }}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="fs-14">{{data.description}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="right-box-wrapper">
+                    <div>
+                        <p class=" fw-500 fs-28 pb-3">You may know</p>
+                    </div>
+                    <div class="right-box-padding cursor-pointer" *ngFor="let data of peopleYouMayKnowDetails">
+                        <div class="right-box-card">
+                            <div class="right-box-avtar">
+                                <!-- <mat-spinner *ngIf="loading" class="avatar-img matSpinnerSize">
+
+                                </mat-spinner> -->
+                                <div class="spinner-border avatar-img" role="status" *ngIf="loading">
+                                    <span class="sr-only" id="loader"></span>
+                                </div>
+                                <ng-container *ngIf="!data?.image;else foundImage">
+                                    <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading" class="avatar-img"
+                                        width="90px" height="90px" /> -->
+                                    <img [hidden]="loading" (load)="onLoad()" src="{{data.image ? baseUrl + data.image : urllink}}" class="avatar-img" />
+                                    <!-- <img [src]="urllink" alt="" class="avatar-img"> -->
+                                </ng-container>
+
+                                <ng-template #foundImage>
+                                    <ng-container *ngIf="data.image.includes('/public/uploads');else linkedinImage">
+                                        <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading"
+                                            class="avatar-img" width="90px" height="90px" /> -->
+                                        <img [hidden]="loading" (load)="onLoad()" src="{{this.baseUrl + data.image}}"
+                                            class="avatar-img" />
+                                        <!-- <img src="{{this.baseUrl + data.image}}" alt="" class="avatar-img"> -->
+                                    </ng-container>
+
+                                    <ng-template #linkedinImage>
+                                        <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading"
+                                            class="avatar-img" width="90px" height="90px" /> -->
+                                        <img [hidden]="loading" (load)="onLoad()" src="{{data.image}}"
+                                            class="avatar-img" />
+                                        <!-- <img src="{{data.image}}" alt="" class="avatar-img"> -->
+                                    </ng-template>
+                                </ng-template>
+                            </div>
+                            <div>
+                                <p class="m-0 fw-400 fs-16 " (click)="sendIndex(data._id)">{{data.firstname}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,267 @@
+.nav-border {
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background-color: #061775;
+  z-index: 10;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+.search-input {
+    background-color: #475bca;
+    border: none;
+    height: 34px;
+    width: 150px;
+    border-radius: 5px;
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 40px;
+    padding-top: 6px;
+    transition: 0.5s;
+}
+.expandSearch {
+  width: 200px !important;
+}
+
+.bridge-logo {
+  width: 100px;
+}
+.profile-box {
+  height: 33px;
+  background-color: #475bca;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.profile {
+  cursor: pointer;
+}
+.profile-pic {
+  width: 45px;
+  height: 45px;
+  margin-right: -10px;
+  z-index: 2;
+}
+.message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home {
+  margin-right: 100px;
+}
+.bridge-tab {
+  margin-left: 100px;
+}
+.userimg {
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  
+}
+.home-icon {
+  width: 25px;
+}
+
+.home-icon path {
+  fill: white;
+}
+
+.search-icon {
+  color: white;
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.search-input::placeholder {
+  color: #DADADA;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.nav-item {
+  cursor: pointer;
+  border-bottom: 2px solid #061775;
+ 
+}
+.nav-item:hover {
+  border-bottom: 2px solid white;
+}
+.search-card {
+  padding: 7px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+.search-card:hover {
+  background-color:#EBFFFB;
+}
+
+.search-suggestion {
+  width: 400px;
+  min-height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  background: #ffffff;
+  z-index: 100;
+  top: 38px;
+  left: 30px;
+  padding: 20px 15px;
+  margin-top: 25px;
+}
+.searchProfile {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.avatar-img {
+  height: 100%;
+  /* width: 100%; */
+  object-fit: cover;
+  object-position: center;
+}
+.navbar-light .navbar-toggler-icon {
+  background-image: url("^assets/web/togel.svg");
+}
+.navbar-light .navbar-toggler {
+  color: white;
+}
+.hide-md {
+  display: none !important;
+}
+.hide {
+  display: none !important;
+}
+.navbar {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 101;
+}
+.active {
+  border-bottom: 3px solid white !important;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background: black;
+  z-index: 100;
+  opacity: 0.3;
+  top: 0px;
+}
+
+.hide-nav-item-in-mobile {
+  display: flex;
+}
+
+.hide-nav-item-in-desktop {
+  display: none;
+}
+.active {
+  border-bottom: 3px solid white;
+}
+
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline-thick,
+::ng-deep.mat-form-field-label {
+  color:black !important;
+}
+::ng-deep.mat-form-field-appearance-outline .mat-form-field-outline{
+  color:unset !important;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .nav-border {
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    padding-bottom: 12px;
+    padding-top: 12px;
+  }
+  .search-input {
+    width: 38px;
+    border-radius: 25px;
+    padding-left: 28px;
+  }
+  .expandSearch {
+    width: 100px !important;
+  }
+  .bridge-logo {
+    width: 90px;
+  }
+  .home {
+    margin-right: 0px;
+    padding-top: 10px;
+  }
+  .bridge {
+    border-bottom: 1px solid #475bca;
+    padding-bottom: 25px;
+    display: flex;
+    /* align-items: center;*/
+    padding-left: 50px;
+  }
+  .message {
+    flex-direction: row;
+    margin-bottom: 15px;
+  }
+  .home {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  .home-icon {
+    width: 32px;
+    margin-right: 8px;
+  }
+  .profile {
+    display: none !important;
+  }
+  .hide-md {
+    display: flex !important;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    /* border-bottom: 1px solid #475bca;*/
+    /* justify-content: center;*/
+    padding-left: 50px;
+    cursor: pointer;
+  }
+  .nav-btn {
+    background-color: #3ddebd;
+  }
+  .hide {
+    display: flex !important;
+    padding-top: 15px;
+    /* padding-left: 37px; */
+  }
+  .search-suggestion {
+    width: 307px;
+    left: -119px;
+  }
+  .searchProfile {
+    height: 38px;
+    width: 48px;
+  }
+  .bridge-tab {
+    margin-left: 0px;
+  }
+
+  .hide-nav-item-in-mobile {
+    display: none;
+  }
+  
+  .hide-nav-item-in-desktop {
+    display: flex;
+  }
+  .search-icon {
+    left: 7px;
+  }
+}

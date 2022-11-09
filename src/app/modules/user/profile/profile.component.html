@@ -1,0 +1,674 @@
+<section>
+    <div class="container">
+        <div class=" row profile-wrapper">
+            <div class="col-md-3 profile-img-wrapper">
+                <div>
+                    <button class="btn  bridge-responsive-btn">
+                        <img src="assets/web/Frame.svg" alt="" width="25px" height="25px">
+                    </button>
+                </div>
+                <!-- <mat-spinner *ngIf="loading" class="img-cover prof matSpinnerSize">
+
+        </mat-spinner> -->
+                <div class="profile-img">
+                    <div class="spinner-border img-cover prof " role="status" *ngIf="loading">
+                        <span class="sr-only" id="loader"></span>
+                    </div>
+
+                    <!-- <h2>{{updateUserDetails.image.includes('/public/uploads')}}</h2> -->
+                    <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading" class="img-cover prof" width="90px"
+            height="90px" />
+          <img [hidden]="loading" (load)="onLoad()" [src]="profileimage" class="img-cover prof" /> -->
+
+
+                    <img [hidden]="loading" (load)="onLoad()" [src]="profileimage" class="img-cover prof" />
+
+                </div>
+
+                <div class="edit-btn-responsive" data-bs-toggle="modal" data-bs-target="#EditdetailsModal"
+                    (click)="openEditUserProfileDataModal()" #editProfileModal>
+
+                    <img src="assets/web/editbtn.svg" alt="" width="25px" height="25px">
+                </div>
+
+            </div>
+            <div class="col-md-9 d-flex  flex-column justify-content-sm-center pr-4 profile-responsive cursor-pointer">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex align-items-center">
+
+                        <div class="d-flex flex-row">
+
+                            <div class="fw-500 fs-25 m-0 pr-0 pr-md-4 pt-2 jennifer-height">
+                                {{updateUserDetails.firstname}} |</div>
+                            <div class="d-flex flex-column">
+                                <p class="fw-500 fs-25 m-0 pr-0 pr-md-4 pt-2 jennifer-height titleBorder">
+                                    {{updateUserDetails.accountType | titlecase}} </p>
+
+
+                                <!-- <hr style="width: 75px; height: 10px;  margin-top: -23px;  color: #1cf7cb;"> -->
+
+                            </div>
+
+                            <!-- <div class="bridgebtndiv">
+                                <button class="btn  bridge-btn mt-1">Bridge</button>
+
+                            </div> -->
+                        </div>
+
+
+                        <!-- new changes -->
+                        <!-- <div class="bridgebtndiv">
+                            <button class="btn  bridge-btn "
+                                (click)="addOrRemoveUserBridge()">{{userBridgedOrNot}}</button>
+                        </div> -->
+                        <!-- new changes -->
+                    </div>
+
+
+                    <div class="responsive-hide">
+
+                        <button class="edit-btn" data-bs-toggle="modal" data-bs-target="#EditdetailsModal"
+                            #editProfileModal (click)="openEditUserProfileDataModal()"><img src="assets/web/editbtn.svg"
+                                alt="" width="25px" height="25px"></button>
+                    </div>
+                </div>
+                <!-- new chng - decription and uncomment schoolname, chng email -->
+                <p class="gray fs-14 ">{{locatioN}}</p>
+
+                <p class="text-start desc">{{updateUserDetails.description}}</p>
+
+            </div>
+
+
+            <!-- <div class="calendlydiv">
+                <div class="calendly-inline-widget calendlydiv" data-url="https://calendly.com/tanmayrichhs3" style="height:230px;"></div>
+            </div> -->
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="interestes-wrapper">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="fs-22 fw-500 m-0">Interests!</p>
+                        <button class="btn plus-btn" data-bs-toggle="modal" data-bs-target="#AddInterestModal"
+                            (click)="searchIntrestReset()"><img src="assets/web/plus.svg" alt=""></button>
+                    </div>
+                    <div *ngFor="let data of profileInterestList" class="modal4option">
+                        <button type="button" class="btn btn-outline interests-btn">{{data}}</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-9 ">
+                <div class="Experience-wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="fw-500 fs-25">Experience</p>
+                        <button class="btn plus-btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><img
+                                src="assets/web/plus.svg" alt=""></button>
+
+                    </div>
+                    <div class="nameofproject-wrapper" *ngFor="let x of ExperienceList">
+                        <div class="d-flex align-items-center">
+                            <div class="project-img-wrapper">
+                                <img src="assets/web/projectimg.svg" alt="" width="35px" height="35px">
+                            </div>
+                            <div>
+                                <p class="m-0 fw-bold fs-16">{{x.title}}</p>
+                                <p class="fs-14 gray m-0">{{x.company}}</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <a href="javascript:void(0)" class="mr-3" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="openExperienceModelWithData(x)">
+                                <img src="assets/web/editbtn.svg" alt="" width="25px" height="25px">
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteExperience(x)">
+                                <img src="assets/web/delete-icon.svg" alt="" width="25px" height="25px">
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="Experience-wrapper">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <p class="fw-500 fs-25">Education</p>
+
+
+                        <button class="btn plus-btn" data-bs-toggle="modal" data-bs-target="#educationModal"><img
+                                src="assets/web/plus.svg" alt=""></button>
+                    </div>
+
+                    <div class="nameofproject-wrapper" *ngFor="let x of EducationList">
+                        <div class="d-flex align-items-center">
+                            <div class="project-img-wrapper">
+                                <img src="assets/web/education.svg" alt="" width="35px" height="35px">
+                            </div>
+                            <div>
+                                <p class="m-0 fw-bold fs-16">{{x.business}}</p>
+                                <p class="fs-14 gray m-0">{{x.activities}}</p>
+                            </div>
+                        </div>
+                        <!-- <div data-bs-toggle="modal" data-bs-target="#educationModal"
+                            (click)="openEducationModelWithData(x)">
+                            <img src="assets/web/editbtn.svg" alt="" width="25px" height="25px">
+                        </div> -->
+
+                        <!-- new start -->
+                        <div class="d-flex align-items-center">
+                            <a href="javascript:void(0)" class="mr-3" data-bs-toggle="modal"
+                                data-bs-target="#educationModal" (click)="openEducationModelWithData(x)">
+                                <img src="assets/web/editbtn.svg" alt="" width="25px" height="25px">
+                            </a>
+                            <a href="javascript:void(0)" (click)="deleteEducation(x)">
+                                <img src="assets/web/delete-icon.svg" alt="" width="25px" height="25px">
+                            </a>
+                        </div>
+                        <!-- new end -->
+                    </div>
+                </div>
+
+                <div class="interestes-wrapper hide-me">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="fs-22 fw-500 m-0">Interests!</p>
+                        <button class="btn plus-btn" data-bs-toggle="modal" data-bs-target="#AddInterestModal"
+                            data-backdrop="static" data-keyboard="false"><img src="assets/web/plus.svg" alt=""
+                                (click)="searchIntrestReset()"></button>
+                    </div>
+                    <div *ngFor="let data of profileInterestList" class="modal4option">
+                        <button type="button" class="btn btn-outline interests-btn">{{data}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Add Experience Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p class="text-center fw-500 fs-22  py-3 gray-1">Tell us about your work experience</p>
+                <form ngNativeValidate [formGroup]="experienceForm" #loginForm="ngForm">
+                    <!-- <p>Hey {{experienceForm.controls.experienceId.value}}</p> -->
+
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label class="railway fw-600">Title</mat-label>
+
+                            <input matInput type="text" placeholder="Title" formControlName="title" value="" required>
+                        </mat-form-field>
+                        <mat-error *ngIf="title?.invalid && title?.touched">
+                            <div class="d-flex align-items-center">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error
+                                </mat-icon>Title Field is required
+                            </div>
+                        </mat-error>
+                    </p>
+                    <!-- new changes -->
+
+                    <mat-form-field appearance="outline">
+                        <mat-label class="railway fw-600">Employment</mat-label>
+                        <mat-select formControlName="employment" required>
+
+                            <mat-option value="Full Time"> Full Time</mat-option>
+                            <mat-option value="Part Time"> Part Time</mat-option>
+                            <mat-option value="Self-employed"> Self-employed</mat-option>
+                            <mat-option value="Contract"> Contract</mat-option>
+                            <mat-option value="Internship"> Internship </mat-option>
+                            <mat-option value="Apprenticeship"> Apprenticeship </mat-option>
+                            <mat-option value="Seasonal"> Seasonal</mat-option>
+
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-error *ngIf="employment?.invalid && employment?.touched">
+                        <div class="d-flex align-items-center">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error</mat-icon>
+                            employment Field is required
+                        </div>
+                    </mat-error>
+                    <!-- new changes ends -->
+
+
+                    <!-- <p>
+            <mat-form-field appearance="outline">
+              <mat-label class="railway fw-600">Employment</mat-label>
+              <input matInput type="text" placeholder="Employment" formControlName="employment">
+
+            </mat-form-field>
+            <mat-error *ngIf="employment?.invalid && employment?.touched">
+              <div class="d-flex align-items-center">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error</mat-icon>employment
+                Field is required
+              </div>
+            </mat-error>
+          </p> -->
+
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label class="railway fw-600">Company</mat-label>
+                            <input matInput type="text" placeholder="Company" formControlName="company" required>
+
+                        </mat-form-field>
+                        <mat-error *ngIf="company?.invalid && company?.touched">
+                            <div class="d-flex align-items-center">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error
+                                </mat-icon>company Field is required
+                            </div>
+                        </mat-error>
+                    </p>
+
+                    <p>
+                        <mat-form-field appearance="outline">
+                            <mat-label class="railway fw-600">Location</mat-label>
+                            <input matInput type="text" placeholder="Location" formControlName="location" required>
+                        </mat-form-field>
+                    </p>
+
+
+                    <!-- [ngClass]="toggleEndDate. == 'step1' ? 'hide' : 'show'" -->
+                    <!-- <p> {{test.checked}}</p> -->
+                    <mat-checkbox #test class="example-margin pb-1 railway fs-12 fw-600">I currently work here
+                    </mat-checkbox>
+                    <p class="fs-18 fw-500 gray-1">Start date</p>
+                    <div class="d-md-flex justify-content-between">
+
+
+
+                        <!-- <div>
+              <p>
+                <mat-form-field appearance="outline">
+                  <mat-label class="railway fw-600">Month</mat-label>
+                  <input matInput type="month" placeholder="Month" min="01" value="30" formControlName="smonth">
+                </mat-form-field>
+              </p>
+            </div> -->
+
+
+                        <div>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Month</mat-label>
+                                    <mat-select disableRipple formControlName="startMonth" required>
+                                        <mat-option value="January">January</mat-option>
+                                        <mat-option value="February">February</mat-option>
+                                        <mat-option value="March">March</mat-option>
+                                        <mat-option value="April">April</mat-option>
+                                        <mat-option value="May">May</mat-option>
+                                        <mat-option value="June">June</mat-option>
+                                        <mat-option value="July">July</mat-option>
+                                        <mat-option value="September">September</mat-option>
+                                        <mat-option value="October">October</mat-option>
+                                        <mat-option value="November">November</mat-option>
+                                        <mat-option value="December">December</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                                <!-- <mat-form-field appearance="outline">
+                                    <mat-label class="railway fw-600">Month</mat-label>
+                                    <input matInput type="text" placeholder="Month" formControlName="startMonth">
+                                </mat-form-field> -->
+
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label class="railway fw-600">Year</mat-label>
+                                    <input matInput placeholder="Year" formControlName="startYear" required>
+
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div [ngClass]="test.checked ? 'hide' : 'show'">
+                        <p class="fs-18 fw-500 gray-1">End date</p>
+                        <div class="d-md-flex justify-content-between ">
+                            <div>
+                                <p>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Month</mat-label>
+                                        <mat-select disableRipple formControlName="endMonth" >
+                                            <mat-option value="January">January</mat-option>
+                                            <mat-option value="February">February</mat-option>
+                                            <mat-option value="March">March</mat-option>
+                                            <mat-option value="April">April</mat-option>
+                                            <mat-option value="May">May</mat-option>
+                                            <mat-option value="June">June</mat-option>
+                                            <mat-option value="July">July</mat-option>
+                                            <mat-option value="September">September</mat-option>
+                                            <mat-option value="October">October</mat-option>
+                                            <mat-option value="November">November</mat-option>
+                                            <mat-option value="December">December</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+
+                                    <!-- <mat-form-field appearance="outline">
+                    <mat-label class="emonth railway fw-600">Month</mat-label>
+                    <input matInput type="text" placeholder="Month" formControlName="endMonth">
+                  </mat-form-field> -->
+                                </p>
+                            </div>
+                            <div>
+                                <p>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label class="eyear railway fw-600">Year</mat-label>
+                                        <input matInput placeholder="Year" formControlName="endYear" >
+                                        <!-- <input matInput type="text" placeholder="Year" formControlName="endYear"> -->
+                                    </mat-form-field>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <button class="btn delete-btn" #AddExperienceModalBtn data-bs-dismiss="modal"
+                                (click)="saveExperienceFormDataCancel()">Cancel</button>
+                        </div>
+
+                        <div *ngIf="!experienceForm.controls.experienceId.value">
+                            <button class="btn save-btn" type="button" (click)="saveExperienceFormData()"
+                                data-bs-dismiss="modal" [disabled]="!experienceForm.valid">Save</button>
+                        </div>
+
+                        <div *ngIf="experienceForm.controls.experienceId.value">
+                            <button type="submit" (click)="editSaveExperienceFormData()" class="btn save-btn"
+                                data-bs-dismiss="modal">Update
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Education  modal- -->
+<div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body ">
+                <p class="text-center fw-500 fs-22  py-3 gray-1">Tell us about your education</p>
+                <form ngNativeValidate [formGroup]="educationForm">
+
+                    <!-- <p>
+                        <input type="disabled" matInput formControlName="educationId">
+                    </p> -->
+                    <p class="fs-18 fw-500 gray-1">School</p>
+                    <mat-form-field appearance="outline">
+                        <mat-label class="railway fw-600">School</mat-label>
+                        <input matInput type="text" placeholder="Ex: School" formControlName="business" required>
+
+                    </mat-form-field>
+                    <mat-error *ngIf="business?.invalid && business?.touched">
+                        <div class="d-flex align-items-center">
+                            <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error</mat-icon>
+                            School Field is required
+                        </div>
+                    </mat-error>
+
+                    <p class="pt-3 fs-18 fw-500 gray-1">Start date</p>
+
+                    <div class="d-md-flex justify-content-between">
+                        <div>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Month</mat-label>
+                                    <mat-select disableRipple formControlName="startMonth" required>
+                                        <mat-option value="January">January</mat-option>
+                                        <mat-option value="February">February</mat-option>
+                                        <mat-option value="March">March</mat-option>
+                                        <mat-option value="April">April</mat-option>
+                                        <mat-option value="May">May</mat-option>
+                                        <mat-option value="June">June</mat-option>
+                                        <mat-option value="July">July</mat-option>
+                                        <mat-option value="September">September</mat-option>
+                                        <mat-option value="October">October</mat-option>
+                                        <mat-option value="November">November</mat-option>
+                                        <mat-option value="December">December</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <!-- <mat-form-field appearance="outline">
+                  <mat-label class=" smonth railway fw-600">Month</mat-label>
+                  <input matInput type="text" placeholder="month" formControlName="smonth">
+                </mat-form-field> -->
+
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <mat-form-field class="startyear" appearance="outline">
+                                    <mat-label class="syear railway fw-600">Year</mat-label>
+                                    <input matInput type="text" placeholder="Year" formControlName="startYear" required>
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="fs-18 fw-500 gray-1">End date</p>
+                    <div class="  d-md-flex justify-content-between ">
+                        <div>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Month</mat-label>
+                                    <mat-select disableRipple formControlName="endMonth" >
+                                        <mat-option value="January">January</mat-option>
+                                        <mat-option value="February">February</mat-option>
+                                        <mat-option value="March">March</mat-option>
+                                        <mat-option value="April">April</mat-option>
+                                        <mat-option value="May">May</mat-option>
+                                        <mat-option value="June">June</mat-option>
+                                        <mat-option value="July">July</mat-option>
+                                        <mat-option value="September">September</mat-option>
+                                        <mat-option value="October">October</mat-option>
+                                        <mat-option value="November">November</mat-option>
+                                        <mat-option value="December">December</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <!-- <mat-form-field appearance="outline">
+                  <mat-label class=" emonth railway fw-600">Month</mat-label>
+                  <input matInput type="text" placeholder="Month" formControlName="emonth">
+                </mat-form-field> -->
+                            </p>
+                        </div>
+                        <div>
+                            <p>
+                                <mat-form-field appearance="outline">
+                                    <mat-label class=" eyear railway fw-600">Year</mat-label>
+                                    <input matInput type="text" placeholder="Year" formControlName="endYear" >
+                                </mat-form-field>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+
+                        <p class="fs-18 fw-500 gray-1">Grade</p>
+                        <mat-form-field appearance="outline">
+                            <mat-label class="railway fw-600">Grade</mat-label>
+                            <input matInput type="text" placeholder="Grade" formControlName="grade" required>
+
+                        </mat-form-field>
+                        <!-- <mat-error *ngIf="grade?.invalid && grade?.touched">
+                            <div class="d-flex align-items-center">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error
+                                </mat-icon>grade Field is required
+                            </div>
+                        </mat-error> -->
+
+                        <p class="pt-3 fs-18 fw-500 gray-1">Activities and Societies</p>
+                        <mat-form-field class="pb-3" appearance="outline">
+                            <mat-label class="railway fw-600"> Activities and Societies </mat-label>
+                            <input matInput type="text" placeholder="Ex: Alpha Phi Omega, Marching Band, Volleyball"
+                                formControlName="activities" required>
+
+
+                        </mat-form-field>
+                        <mat-error *ngIf="activities?.invalid && activities?.touched">
+                            <div class="d-flex align-items-center">
+                                <mat-icon aria-hidden="false" aria-label="Example home icon" class="pr-3">error
+                                </mat-icon>activities Field is required
+                            </div>
+                        </mat-error>
+
+                    </div>
+                    <div class="d-flex justify-content-around">
+
+                        <div>
+                            <button type="button" class="btn delete-btn" data-bs-dismiss="modal"
+                                (click)="saveEducationFormDataCancel()">Cancel</button>
+                        </div>
+
+                        <div *ngIf="!educationForm.controls.educationId.value">
+                            <button type="button" (click)="saveEducationFormData()" class="btn save-btn"
+                                data-bs-dismiss="modal" [disabled]="!educationForm.valid">Save</button>
+                        </div>
+
+                        <div *ngIf="educationForm.controls.educationId.value">
+                            <button type="submit" (click)="editSaveEducationFormData()" class="btn save-btn"
+                                data-bs-dismiss="modal">Update</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal-3 Edit Profile Details -->
+<div>
+    <div class="modal fade" id="EditdetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body ">
+                    <p class="text-center fw-500 fs-22  py-3 gray-1">Edit Profile Details </p>
+                    <!-- ngNativeValidate -->
+                    <form [formGroup]="EditForm" (ngSubmit)="EditFormData()">
+
+                        <p class="fs-18 fw-500 gray-1">Profile Image</p>
+                        <div>
+                            <div class="editProfileImg  pb-3 d-flex mx-auto">
+                                <img class="profile-img2" [src]="profileimage">
+                            </div>
+                            <input type="file" class="btn btn-secondary  btn-sm d-flex mx-auto img-btn"
+                                (change)="selectFile($event)" formControlName="image" required>
+                        </div>
+
+                        <p class="fs-18 fw-500 gray-1 pt-3">First Name</p>
+                        <mat-form-field appearance="outline">
+                            <!-- <mat-label class="railway fw-600">First Name</mat-label> -->
+                            <input matInput type="text" formControlName="firstname" required>
+                        </mat-form-field>
+
+                        <p class="fs-18 fw-500 gray-1 pt-3">Last Name</p>
+                        <mat-form-field appearance="outline">
+                            <!-- <mat-label class="railway fw-600">Last Name</mat-label> -->
+                            <input matInput type="text" formControlName="lastname">
+                        </mat-form-field>
+
+                        <!-- new chng  -->
+                        <!-- <p class="fs-18 fw-500 gray-1 pt-3">Info</p>
+                        <mat-form-field appearance="outline">
+                           <mat-label class="railway fw-600">Last Name</mat-label> -->
+                        <!-- <input matInput type="text" formControlName="lastname">
+                        </mat-form-field>  -->
+                        <!-- new chng end  -->
+
+
+                        <p class="pt-3 fs-18 fw-500 gray-1">Email</p>
+                        <mat-form-field class="pb-3" appearance="outline">
+                            <!-- <mat-label class="railway fw-600">Email</mat-label> -->
+                            <input matInput type="text" formControlName="email" readonly required>
+                        </mat-form-field>
+                        <p class="pt-2 fs-18 fw-500 gray-1">Bio</p>
+                        <mat-form-field class="pb-3" appearance="outline">
+                            <!-- <mat-label class="railway fw-600">Description</mat-label> -->
+                            <input matInput type="text" formControlName="description" required>
+                        </mat-form-field>
+                        <div class="d-flex justify-content-around modal-footer">
+                            <!-- <div>
+                <button type="button" #editProfileModalBtn class="btn thirdModal_cancel" data-dismiss="modal">
+                  Cancel</button>
+              </div> -->
+                            <div>
+                                <button type="button" #editProfileModalBtn class="btn thirdModal_cancel"
+                                    data-bs-dismiss="modal">
+                                    Cancel</button>
+                            </div>
+                            <div>
+                                <button type="submit" data-bs-dismiss="modal" class="btn save-btn">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal-4 Add Intrest -->
+<div>
+    <div class="modal fade" id="AddInterestModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body ">
+                    <p class="text-center fw-500 fs-22  py-3 gray-1">Add Interests </p>
+                    <form ngNativeValidate>
+                        <p class="fs-18 fw-500 gray-1 pt-3">Interests</p>
+                        <mat-form-field class="example-full-width" appearance="outline" class="select" multiple>
+                            <input matInput type="text" aria-label="Number" [matAutocomplete]="auto" matInput
+                                placeholder="Type your interests" (keyup)="searchInterest($event)" #filterNameInterst
+                                name="filterNameInterst">
+                            <!-- <input matInput type="text" aria-label="Number" [matAutocomplete]="auto"  matInput
+                placeholder="Type your interests" formControlName="" [(ngModel)]="blank"
+                (keyup)="searchInterest($event)"> -->
+                            <mat-autocomplete #auto="matAutocomplete">
+                                <mat-option (click)="add(data.interest)" *ngFor="let data of filteredArray"
+                                    [value]="data.interest">
+                                    {{data.interest}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <mat-chip-list #chipList>
+                            <mat-chip class="matchip railway" *ngFor="let d of tagslist;let i= index"
+                                [selectable]="selectable" [removable]="removable" (removed)="remove(i)">{{d}}
+
+                                <button matChipRemove *ngIf="removable">
+                                    <mat-icon class="cancel ">cancel</mat-icon>
+                                    <!-- <img class="cancel" src="assets/web/cancel_icon.svg" width="20px"> -->
+                                </button>
+                            </mat-chip>
+                        </mat-chip-list>
+
+                        <div class="d-flex justify-content-around modal-footer">
+                            <div>
+                                <button type="button" #AddInterestModalBtn class="btn thirdModal_cancel"
+                                    data-bs-dismiss="modal">
+                                    Cancel</button>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn save-btn" (click)="AddInterest()">Save</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

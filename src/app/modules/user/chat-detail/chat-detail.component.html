@@ -1,0 +1,221 @@
+<!-- <div class="pickChat" *ngIf="!chatService.isMessageSelected &&  chatMessagesArr.recieverMessage">
+    <img src="assets/web/chat.svg" alt="">
+    <p class="fw-bold pt-3">Pick a chat and send a message!</p>
+</div> -->
+<div class="pickChat" *ngIf="!charUserName">
+
+    <img src="assets/web/chat.svg" alt="">
+    <p class="fw-bold pt-3">Pick a chat and send a message!</p>
+</div>
+<div>
+    <div class="profile-wrapper cursor-pointer" *ngIf="charUserName">
+        <div (click)="sendIndex()" class="chatName">
+            <div class="user-img">
+                <img src="{{charUserImage}}" alt="" class="img-cover">
+            </div>
+            <p class="m-0 fw-500 fs-16 mt-3">{{charUserName}}</p>
+
+        </div>
+
+        <!-- Schedule Meeting Model Comment Stat -->
+        <!-- <div class="responsive-btn2">
+            <button class="btn chat-responsive-btn ms-2" data-bs-toggle="modal" data-bs-target="#zoomMeetingModal"
+                (click)="zoomMeeting()">Schedule meeting</button>
+        </div> -->
+        <!-- Schedule Meeting Model Comment end -->
+
+    </div>
+
+    <div class="message-area" *ngIf="charUserName" #scrollUp style="overflow: scroll;">
+        <div *ngFor="let x of chatMessagesArr">
+            <!--incoming-start-->
+            <div class="d-flex align-items-center" *ngIf="!x.senderMessage">
+                <div class="incoming-msg d-flex align-items-end ">
+                    <div class="pb-3 mr-2">
+                        <mat-spinner *ngIf="loading" class="incoming-img ">
+
+                        </mat-spinner>
+                        <div class="incoming-img-wrapper">
+                            <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading" class="incoming-img" width="90px" height="90px" />
+                            <img [hidden]="loading" (load)="onLoad()" src="{{x.recieverImage ? 'https://raphael-dashboard.hackerkernel.com' + x.recieverImage : 'assets/web/prof.png'}}" class="incoming-img" />
+                            <!-- <img src="{{ x.recieverImage ? 'https://raphael-dashboard.hackerkernel.com' + x.recieverImage : 'assets/web/prof.png'}}"
+                                alt="" class="incoming-img"> -->
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="incomimg-text">
+                            <!-- <p [hidden]="(this.activeEditMessageEntity?.messageId == x.message_id)" id="{{x.message_id}}"
+                class="m-0 fs-14 fw-400">{{x.recieverMessage}}</p>
+              <input type="text" [hidden]="!(this.activeEditMessageEntity?.messageId == x.message_id)"
+                 #recieverText class="form-control" value="{{x.recieverMessage}}"> -->
+
+                            <p class="m-0 fs-14 fw-400">{{x.recieverMessage}}</p>
+                            <input type="text" name="message" readonly *ngIf="x?.reaction_emoji_unicodes?.length" class="reactedEmoji" value="{{this.convertUnicodeToEmoji(x?.reaction_emoji_unicodes).join(' ')}}">
+                        </div>
+
+                        <div>
+                            <p class="incoming-time">{{utilityservice.getFormatedTime(x.messagedAt)}}</p>
+                        </div>
+                    </div>
+                    <div class="recievedot">
+                        <img src="assets/web/More.svg" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <div class="dropdown-menu">
+                            <div class="btn text-start" (click)="toggleEmojiPicker(x.message_id,'addReaction')"><img class="me-2" src="assets/web/Smiles.png" width="20px" height="20px">Add a reaction</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--incoming-closed-->
+            <!--outgoing-start-->
+            <div class="outgoing-msg d-flex justify-content-end " *ngIf="!x.recieverMessage">
+                <div class="outgoing-msg-wrapper mt-3 d-flex flex-column align-items-end">
+                    <div class="d-flex align-items-center">
+                        <div class="btn-group dropright pr-2">
+                            <img src="assets/web/More.svg" alt="" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown-menu">
+                                <div class="btn text-start" (click)="toggleEmojiPicker(x.message_id,'addReaction')"><img class="me-2" src="assets/web/Smiles.png" width="20px" height="20px">Add a reaction</div>
+
+                                <div class="btn text-start edit" *ngIf="(this.activeEditMessageEntity?.messageId == x.message_id)" (click)="editMessage(x)">
+                                    <img class="me-2" src="assets/web/Frame.png" width="20px" height="20px">Save
+                                </div>
+
+                                <div class="btn text-start edit" *ngIf="!(this.activeEditMessageEntity?.messageId == x.message_id)" (click)="enableEditMessageInput(x)">
+                                    <img class="me-2" src="assets/web/Frame.png" width="20px" height="20px">Edit
+                                </div>
+
+
+                                <!-- <div class="btn text-start edit" id="sendMesgIdForModel" data-bs-target="#editSendMsgModel"
+                     ><img class="me-2" src="assets/web/Frame.png"
+                      width="20px" height="20px">Edit</div> -->
+
+                                <!-- Dropdown menu links -->
+                            </div>
+                        </div>
+                        <div class="outgoing-text">
+                            <p [hidden]="(this.activeEditMessageEntity?.messageId == x.message_id)" id="{{x.message_id}}" class="m-0 fs-14 fw-400">{{x.senderMessage}}</p>
+
+                            <input type="text" name="message" readonly *ngIf="x?.reaction_emoji_unicodes?.length" class="reactedEmoji" value="{{this.convertUnicodeToEmoji(x?.reaction_emoji_unicodes).join(' ')}}">
+
+                            <input type="text" [hidden]="!(this.activeEditMessageEntity?.messageId == x.message_id)" (keyup.enter)="editMessage(x)" (input)="messageChanged($event)" #senderText class="form-control" value="{{x.senderMessage}}">
+                        </div>
+                    </div>
+                    <div>
+                        <p class="incoming-time m-0">{{utilityservice.getFormatedTime(x.messagedAt)}}</p>
+                    </div>
+                </div>
+            </div>
+            <!--outgoing-closed-->
+        </div>
+    </div>
+
+    <!-- <div class="edit-wrapper mb-5">
+    <button type="button" #sendMesgIdForModel data-bs-target="sendMesgIdForModel">Open Modal</button>
+  </div> -->
+
+
+    <emoji-mart class="emoji-mart" *ngIf="showEmojiPicker" (emojiSelect)="addEmoji($event)" title="Pick your emoji…">
+    </emoji-mart>
+
+    <div class="send-area" *ngIf="charUserName">
+        <form [formGroup]="sendMsgForm" (ngSubmit)="sendMsg()" class="send-wrapper">
+
+            <input class="send-text sendMsgFormLeftSection" type="text" formControlName="msg" placeholder="Message. . ." (blur)="onBlur()" (focus)="onFocus()" name="message" [(ngModel)]="message">
+
+            <div class="sendMsgFormRightSection" style="margin-left:7%">
+                <button style="border: none; background-color: white;" type="button" (click)="toggleEmojiPicker(null,'addEmoji')">😀</button>
+            </div>
+
+            <img src="assets/web/sendmsg.svg" type="submit" alt="" width="20px" height="20px" (click)="sendMsg()">
+        </form>
+    </div>
+
+
+    <!-- optionRecieverModal -->
+
+
+    <!-- Schedule Meeting Model Comment Stat -->
+    <!-- zoom Modal -->
+
+    <!-- <div class="modal fade" id="zoomMeetingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+        data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body ">
+                    <mat-card class="meeting-container zoomFormdiv">
+                        <mat-card-header style="background-color:#000;color:#fff;">
+                            <span onclick="document.getElementById('zoomMeetingModal').style.display='none'"
+                                class="close-button topright">&times;</span>
+                        </mat-card-header>
+                        <mat-card-header class="scheduleddiv">
+                            <mat-card-title class="scheduled">Schedule Meeting</mat-card-title>
+
+
+                        </mat-card-header>
+
+                        <form class="form zoomForm" [formGroup]="scheduleMeetingForm" (ngSubmit)="zoomMeeting()">
+                            <mat-card-content>
+                                <div class="mid-width-element">
+                                    <mat-form-field appearance="outline" class="zoomFormField">
+                                        <mat-label class="text-secondary">Topic</mat-label>
+                                        <input matInput placeholder="Topic" formControlName="name">
+                                    </mat-form-field>
+                                </div>
+                                <div class="inline-block-element">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label class="text-secondary">Date</mat-label>
+                                        <input matInput [matDatepicker]="picker" formControlName="date">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label class="text-secondary">Time</mat-label>
+                                        <input matInput placeholder="Time" type="time" formControlName="time">
+                                    </mat-form-field>
+                                </div>
+                                <div class="inline-block-element">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label class="text-secondary">Duration (hours)</mat-label>
+                                        <input type="number" matInput placeholder="Duration in hours"
+                                            formControlName="duration_hours">
+                                    </mat-form-field>
+                                    <mat-form-field appearance="outline">
+                                        <mat-label class="text-secondary">Duration (minutes)</mat-label>
+                                        <input type="number" matInput placeholder="Duration in minutes"
+                                            formControlName="duration_minutes">
+                                    </mat-form-field>
+                                </div>
+                            </mat-card-content>
+                            <div class="clipboardMainDiv">
+                                <div class="saveDiv ">
+                                    <mat-card-actions class="matCardDiv ">
+                                        <button mat-button mat-raised-button type="submit"
+                                            class="btn zoomsavebtn">Save</button>
+                                    </mat-card-actions>
+                                </div>
+
+                                <div class="clipboardDiv ">
+                                    <div class="clipboardTextDiv">
+
+                                        <p id="myDiv" class="ZoomUrl" [hidden]="!(isCopyUrlEnable)"
+                                            formControlName="join_url">{{join_url}}</p>
+
+                                    </div>
+
+                                    <div class="clipboardBtnDiv">
+                                        <button class="clipboardbtn" [hidden]="!(isCopyUrlEnable)"
+                                            (click)="copyToClipboard()">Copy
+                                            URL</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Schedule Meeting Model Comment  -->

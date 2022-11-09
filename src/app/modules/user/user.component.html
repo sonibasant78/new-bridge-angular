@@ -1,0 +1,141 @@
+<nav class="navbar navbar-expand-lg navbar-light  nav-border">
+  <div class="container-fluid  ps-4 pe-4">
+    <div class="d-flex">
+      <a class="navbar-brand" routerLink="/user/dashboard"><img src="assets/web/logo.svg" alt=""
+          class="bridge-logo"></a>
+      <div class="position-relative ml-md-5 ml-0 ">
+        <input type="text" placeholder="Search" aria-label="Search" class="form-control me-2 search-input"
+          [(ngModel)]="searchInputValue" (keyup)="searchuser($event)" (keyup)="onSearchInputChange() "
+          (focus)="onSearchFocus()" (blur)="onSearchBlur()" #searchBar [ngClass]="{'expandSearch': isSearchFocused}"
+          #searchInput>
+
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="search-icon fw-300">search
+        </mat-icon>
+
+        <!-- search list suggestion starts-->
+        <div class="search-suggestion" *ngIf="showSearchList" #searchedResultArea>
+          <div class="d-flex align-items-center search-card " *ngFor="let data of UserList"
+            (click)="navigateToSearchedList(data._id)">
+            <div class="searchProfile">
+              <img
+                src="{{data.image ? 'https://raphael-dashboard.hackerkernel.com' + data.image : 'assets/web/prof.png'}}"
+                alt="" class="avatar-img">
+            </div>
+            <div>
+              <p class="m-0"><span class="fw-500">{{data.username}}</span><span class="gray fs-12"> •
+                  {{data.description}} •
+                  {{data.experience[data.experience.length-1]?.title}}</span></p>
+            </div>
+          </div>
+        </div>
+        <!-- search list suggestion end -->
+        
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+
+      <div class="d-flex align-items-center hide-md " routerLink="/user/profile" data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <div class="spinner-border userimg  " role="status" *ngIf="loading">
+          <span class="sr-only" id="loader"></span>
+        </div>
+        <div class="profile-pic">
+
+          <!-- <img *ngIf="loading" src="/assets/web/loading.gif" alt="loading" class="userimg" width="90px"
+                        height="90px" /> -->
+          <img [hidden]="loading" (load)="onLoad()" [src]="profileimage" class="userimg" />
+
+          <!-- <img [src]="profileimage" alt="" class="userimg"> -->
+
+        </div>
+        <div class="profile-box">
+          <p class="m-0 pe-3 ps-4 white">{{updateUserDetails.firstname}}</p>
+        </div>
+      </div>
+      <!-- desktop -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 pt-17 bridge hide-nav-item-in-mobile">
+        <li class="nav-item d-flex align-items-center flex-md-column home" routerLink="/user/dashboard"
+          (click)="select()" [ngClass]="{'active': homeSelect =='/user/dashboard'}">
+          <img src="assets/web/Home.svg" alt="" class="home-icon" *ngIf="homeSelect != '/user/dashboard'">
+          <img src="assets/web/home-fill.svg" alt="" class="home-icon" *ngIf="homeSelect == '/user/dashboard'">
+
+          <p class="m-0 white fs-14 home">Home</p>
+        </li>
+        <li class="message nav-item" routerLink="/user/message" (click)="select()"
+          [ngClass]="{'active': homeSelect =='/user/message' }">
+
+          <img src="assets/web/Mess.svg" alt="" class="home-icon" *ngIf="homeSelect != '/user/message'">
+          <img src="assets/web/message-fill.svg" class="home-icon" alt="" *ngIf="homeSelect == '/user/message'">
+          <p class="m-0 white fs-14 home">Messages</p>
+        </li>
+
+        <li class="nav-item d-flex align-items-center flex-md-column bridge-tab" routerLink="/user/bridge"
+          (click)="select()" [ngClass]="{'active': homeSelect =='/user/bridge' }">
+          <img src="assets/web/Frame.svg" alt="" class="home-icon" *ngIf="homeSelect != '/user/bridge'">
+          <img src="assets/web/myBridgeIcon.png" class="home-icon" alt="" *ngIf="homeSelect == '/user/bridge'">
+          <p class="m-0 white fs-14 home">My Bridges</p>
+
+        </li>
+      </ul>
+      <!-- for mobile -->
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0 bridge hide-nav-item-in-desktop">
+        <li class="nav-item d-flex align-items-center flex-md-column home" routerLink="/user/dashboard"
+          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <img src="assets/web/Home.svg" alt="" class="home-icon">
+          <p class="m-0 white fs-14 home">Home</p>
+        </li>
+        <li class="message nav-item" routerLink="/user/message" data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+
+          <img src="assets/web/Mess.svg" alt="" class="home-icon">
+          <p class="m-0 white fs-14 home">Messages</p>
+        </li>
+
+        <li class="nav-item d-flex align-items-center flex-md-column bridge-tab" routerLink="/user/bridge"
+          data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <img src="assets/web/Frame.svg" alt="" class="home-icon">
+          <p class="m-0 white fs-14 home">My Bridges</p>
+
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center profile" routerLink="/user/profile">
+        <div class="profile-pic">
+          <img [src]="profileimage" alt="" class="userimg">
+        </div>
+        <div class="profile-box">
+          <!-- <p class="m-0 pe-3 ps-4 white">{{userdata?.username}}</p> -->
+          <p class="m-0 pe-3 ps-4 white">{{updateUserDetails.username}}</p>
+        </div>
+      </div>
+      <div class="d-flex justify-content-around hide">
+        <!-- <div>
+                    <button class="btn nav-btn mb-2"><img src="assets/web/blogbtn.svg" alt=""></button>
+                    <p class="white text-center">Blog</p>
+                </div> -->
+        <div routerLink="/user/help" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="btn nav-btn mb-2"><img src="assets/web/helpbtn.svg" alt=""></button>
+          <p class="white text-center">Help</p>
+        </div>
+        <div routerLink="/user/account-setting" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="btn nav-btn mb-2"><img src="assets/web/settingbtn.svg" alt=""></button>
+          <p class="white text-center">Setting</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="pt-60 position-relative">
+  <div class="overlay" *ngIf="showSearchList"></div>
+  <router-outlet></router-outlet>
+</div>
